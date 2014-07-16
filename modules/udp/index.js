@@ -20,4 +20,4 @@ exports.init   = function (cb) {
 
 	server.bind(udpPort);
 
-}
+};

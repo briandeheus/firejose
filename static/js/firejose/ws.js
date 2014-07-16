@@ -35,12 +35,6 @@
 
 		};
 
-		setInterval(function () {
-
-			ws.send('heartbeat');
-
-		}, 10 * 1000);
-
 	}
 
 	WS.prototype.parseMessage = function (message) {

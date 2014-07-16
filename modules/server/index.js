@@ -11,6 +11,7 @@ app.enable('trust proxy');
 app.use(require('body-parser')());
 app.use(require('cookie-parser')());
 app.use(require('express-session')({secret: secret}));
+app.use(require('express').static('static', __dirname + '/static'));
 
 exports.methods = app;
 exports.name    = 'server';
