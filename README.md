@@ -34,3 +34,6 @@ For example: `1405499680942:test:5`. I wrote a client for nodejs already, search
 ![blah](http://i.imgur.com/7Y3jhpC.png)
 10. You can change the table headers by clicking on the name and entering a new name. 
 ![blah](http://i.imgur.com/vyO0TN3.png)
+
+##Improving Firejose
+Firejose was written in a few hours, this results in less than perfect code and no doubt a plethora of bugs. If you found any bugs or made any improvements I'd love for you to send a pull request
