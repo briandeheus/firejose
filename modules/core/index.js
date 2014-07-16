@@ -39,7 +39,7 @@ exports.init = function (cb) {
 
 		});
 
-		ws.on('close', function () {
+		ws.on('error', function () {
 
 			carton.logger.verbose('Client disconnected because of an error.');
 			clients.splice(index, 1);
