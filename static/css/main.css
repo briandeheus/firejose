@@ -5,8 +5,12 @@ body {
 }
 
 #chartContainer {
+	
 	text-align: left;
+	left: 80px;
+	position: absolute;
 }
+
 .contentContainer {
 
 	margin: 5px;

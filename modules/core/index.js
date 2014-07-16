@@ -31,11 +31,13 @@ exports.init = function (cb) {
 		clients.push(ws);
 		//Get the index of the client for removal.
 		var index = clients.lenght - 1;
+		var interval;
 
 		ws.on('close', function () {
 
 			carton.logger.verbose('Client disconnected');
 			clients.splice(index, 1);
+			clearInterval(interval);
 
 		});
 
@@ -43,13 +45,18 @@ exports.init = function (cb) {
 
 			carton.logger.verbose('Client disconnected because of an error.');
 			clients.splice(index, 1);
+			clearInterval(interval);
 
 		});
 
 		//Send a ping to the client regulary to prevent timeouts if data is not being sent.
-		setInterval(function () {
+		interval = setInterval(function () {
 
-			ws.ping();
+			try {
+				ws.ping();
+			} catch (e) {
+				carton.logger.verbose('Could not ping client:', e);
+			}
 
 		}, 30 * 1000);
 
