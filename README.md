@@ -27,8 +27,7 @@ As data comes in, Firejose automatically creates a graph for your to easily see 
 7. Enter the websocket URL for firejose in the prompt, by default it's: `localhost:7051`.
 ![blah](http://i.imgur.com/vHifPQE.png)
 8. Start sending data to firejose in the firejose format. `timeinms:metricname:metricvalue`. This string needs to be UTF8 formatted.
-For example: `1405499680942:test:5`. I wrote a client for nodejs already, search npm for `firejose-client`.
-![blah](http://i.imgur.com/LmX6xAB.png)
+For example: `1405499680942:test:5`. I wrote a client for nodejs already, search npm for `firejose-client`. ![blah](http://i.imgur.com/LmX6xAB.png)
 9. The firejose web interface will automatically create graphs for metrics.
 ![blah](http://i.imgur.com/mq30Aa2.png)
 10. When you introduce new metrics, new graphs are automatically created on the fly
