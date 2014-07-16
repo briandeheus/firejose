@@ -1,5 +1,17 @@
 {{> global/partials/header}}
+
+<div id="chartContainer">
+</div>
+
+<script>
 	
-	<h1>Hello World</h1>
-	<p>Your boilerplate installation is up and running!</p>
+	document.onready = function () {
+
+		var url = prompt('Websocket URL for Firejose? (i.e localhost:7001)');
+		var ws = new WS(url);
+
+	}
+
+</script>
+
 {{> global/partials/footer}}

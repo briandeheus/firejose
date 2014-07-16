@@ -1,17 +1,36 @@
-carton-web-boilerplate
+Firejose
 ======================
+zero-setup, short lived, real-time metric visualization for development and benchmarking. <sup>I couldn't fit more buzzwords in there, even if I tried.</sup>
 
-Boilerplate template for carton
+##Introduction
+Data goes in. Data goes out.
+Like a firehose. Get it? Fire. Hose. No way. Jose.
 
-##Installation
-First clone this repository via your favorite Git client. 
+This data can then be seen in graphs that are automatically created.
 
-Next up in the root directory of the boilerplate run `npm install` to install all dependencies.
+###Short lived
+Firejose doesn't use a backend to store data. Your browser acts as a temporary datastore.
 
-After you've installed all dependencies check if your configuration file `cfg/cfg.json` has the right settings.
+###Real time
+Using websockets Firejose sends all incoming data straight to your browser.
 
-Change the `server_name`, `root_directory` and the `port` in the `webserver.conf` file.
+###Metric visualization
+As data comes in, Firejose automatically creates a graph for your to easily see whatever metric you're tracking
 
-Restart Nginx
-
-You should now be able to access your website at http://localhost:yourport or whatever you set the server_name to.
+##Getting started
+1. Install by cloning the git repo
+2. In root folder of firejose, run `npm install`.
+3. Change any values in `cfg\development.json` to your hearts content.
+4. If your `NODE_ENV` is not set to `development`, do it now or create a configuration file named after your `NODE_ENV`.
+5. Point your browser to the location of where your installation is running, by default it's: `http://localhost:7050`.
+6. Enter the websocket URL for firejose in the prompt, by default it's: `localhost:7051`.
+![blah](http://i.imgur.com/vHifPQE.png)
+7. Start sending data to firejose in the firejose format. `timeinms:metricname:metricvalue`. This string needs to be UTF8 formatted.
+For example: `1405499680942:test:5`. I wrote a client for nodejs already, search npm for `firejose-client`.
+![blah](http://i.imgur.com/LmX6xAB.png)
+8. The firejose web interface will automatically create graphs for metrics.
+![blah](http://i.imgur.com/mq30Aa2.png)
+9. When you introduce new metrics, new graphs are automatically created on the fly
+![blah](http://i.imgur.com/7Y3jhpC.png)
+10. You can change the table headers by clicking on the name and entering a new name. 
+![blah](http://i.imgur.com/vyO0TN3.png)

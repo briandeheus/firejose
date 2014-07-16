@@ -1,6 +1,7 @@
 {
-	"name": "carton-web-boilerplate",
-	"description": "Boilerplate template for Snor",
+	"name": "firejose",
+	"description": "Short lived, non-persistant real-time metric visualization",
+	"version": "0.1.0",
 	"dependencies": {
 
 		"express": "4.4.1",
@@ -11,6 +12,8 @@
 		"carton": "1.1.0",
 		"carton-snor": "0.1.0",
 
-		"winston": "*"
+		"winston": "*",
+		"ws": "*"
 	}
+	
 }

@@ -1,4 +1,59 @@
 html,
 body {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Arimo', sans-serif;
+	text-align: center;
+}
+
+#chartContainer {
+	text-align: left;
+}
+.contentContainer {
+
+	margin: 5px;
+	padding: 5px;
+
+}
+
+.chartContainer {
+
+	display: inline-block;
+	border: 1px solid rgb(224, 224, 224);
+	margin: 5px;
+	padding: 5px;
+
+}
+
+.chartWrapper {
+
+	position: relative;
+	display: inline-block;
+	margin: 20px;
+	box-sizing: border-box;
+	width: 662px;
+
+}
+
+.chart {
+
+	position: relative;
+	left: 60px;
+
+}
+
+.y_axis {
+
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 60px;
+
+}
+
+.chartTitle {
+	border-bottom: 1px solid rgb(224, 224, 224);
+	color: rgb(129, 129, 129);
+	margin: -5px -5px 10px -5px;
+	padding: 5px;
+	text-align: center;
+	font-weight: bold;
 }
