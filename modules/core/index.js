@@ -14,8 +14,13 @@ exports.init = function (cb) {
 		for (var i = 0, l = clients.length; i < l; i++) {
 
 			carton.logger.verbose('Sending message to client.');
-			clients[i].send(message);
-
+			
+			try {
+				clients[i].send(message);
+			} catch (e) {
+				carton.logger.verbose('Could not send a message to client:', e);
+			}
+			
 		}
 
 	}
@@ -33,6 +38,20 @@ exports.init = function (cb) {
 			clients.splice(index, 1);
 
 		});
+
+		ws.on('error', function () {
+
+			carton.logger.verbose('Client disconnected because of an error.');
+			clients.splice(index, 1);
+
+		});
+
+		//Send a ping to the client regulary to prevent timeouts if data is not being sent.
+		setInterval(function () {
+
+			ws.ping();
+
+		}, 30 * 1000);
 
 	});
 
