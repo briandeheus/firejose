@@ -26,19 +26,25 @@
 
 		if (this._allCharts[name]) {
 
+			if (this._allCharts[name].avg === false) {
+
+				return this._allCharts[name].avg = parseFloat(value);
+
+			}
+
 			this._allCharts[name].avg += parseFloat(value);
 			this._allCharts[name].avg = this._allCharts[name].avg / 2;
 
 		} else {
 
-			this.create(name);
+			this.create(name, 1);
 			this.update(name, timestamp, value);
 
 		}
 
 	}
 
-	Charts.prototype.create = function (name) {
+	Charts.prototype.create = function (name, intervalInSeconds) {
 
 		var that      = this;
 		var parent    = document.getElementById('chartContainer');
@@ -95,6 +101,10 @@
 		parent.appendChild(container);
 		graph.render();
 
+		//Interval is the amount in ms that we update 
+		var interval = 1000 * intervalInSeconds;
+		var now      = Date.now();
+
 		setInterval(function () {
 
 			seriesData.push({ x: Date.now() / 1000, y: that._allCharts[name].avg });
@@ -105,10 +115,13 @@
 
 			}
 
-			that._allCharts[name].avg = 0;
+			that._allCharts[name].avg = false;
 			graph.update();
 
-		}, 1000);
+		}, interval);
+
+	
+		
 
 		this._allCharts[name] = {
 			graph: graph,
