@@ -1,19 +1,85 @@
 (function (window) {
 
-	function makeNode(tag, className, content) {
+	function makeNode(tag, className, content, params) {
   
 		var f         = document.createElement(tag);
 		f.className   = className;
 		f.textContent = content || '';
 
-		if (className === 'chartTitle') {
-			f.setAttribute("contentEditable", true);
+		for (var p in params) {
+			f.setAttribute(p, params[p]);
 		}
 
 		return f;
 
 	}
 
+	function makeIcon(type) {
+
+		var wrapper = makeNode('div', 'item', null, { contentEditable: false });
+		var icon    = makeNode('i', 'fa fa-' + type);
+
+		wrapper.appendChild(icon);
+
+		return wrapper;
+
+	}
+
+	function makeRadioSelect(id, name, value, text, checked) {
+
+		var wrapper = makeNode('span');
+		var input   = makeNode('input', 'hidden', '', {value: value, type: 'radio', name: name, id: id, checked: checked});
+		var label   = makeNode('label', '', text, { 'for': id });
+
+		wrapper.appendChild(input);
+		wrapper.appendChild(label);
+
+		return wrapper;
+	}
+
+
+	function makeFormulaIcon(name, onupdate) {
+		
+		var hidden  = true;
+
+		var wrapper = makeNode('span', 'iconWrapper');
+		var icon    = makeIcon('flask');
+  
+		var iconMenu = makeNode('div', 'iconMenu');
+
+		var avg      = makeRadioSelect(name + 'frm2', name, 'avg', 'AVG', true);
+		var sum      = makeRadioSelect(name + 'frm1', name, 'sum', 'SUM', false);
+
+
+		wrapper.appendChild(icon);
+
+		iconMenu.appendChild(sum);
+		iconMenu.appendChild(avg);
+
+		wrapper.appendChild(icon);
+		wrapper.appendChild(iconMenu);
+
+		icon.onclick = function () {
+
+			if (hidden) {
+
+				iconMenu.style.display = 'block';
+				hidden = false;
+
+			} else {
+
+				iconMenu.style.display = 'none';
+				hidden = true;
+
+			}
+			
+			onupdate(document.querySelector('input[name="' + name + '"]:checked').value);
+
+		}
+
+		return wrapper;
+
+	}
 
 	var Charts = function (container) {
 
@@ -26,14 +92,22 @@
 
 		if (this._allCharts[name]) {
 
-			if (this._allCharts[name].avg === false) {
+			if (this._allCharts[name].val === false) {
 
-				return this._allCharts[name].avg = parseFloat(value);
+				return this._allCharts[name].val = parseFloat(value);
 
 			}
 
-			this._allCharts[name].avg += parseFloat(value);
-			this._allCharts[name].avg = this._allCharts[name].avg / 2;
+			console.log(this._allCharts[name].val);
+			
+			this._allCharts[name].val += parseFloat(value);
+
+			if (this._allCharts[name].type === 'avg') {
+
+				this._allCharts[name].val = this._allCharts[name].val / 2;
+
+			}
+			
 
 		} else {
 
@@ -52,13 +126,30 @@
 		var wrapper   = makeNode('div', 'chartWrapper');
 		var y_axis    = makeNode('div', 'y_axis');
 		var chart     = makeNode('div', 'chart');
-		var title     = makeNode('div', 'chartTitle', name);
+		var title     = makeNode('div', 'chartTitle');
+		var titleText = makeNode('span', null, name, { contentEditable: true });
 
 		wrapper.appendChild(y_axis);
 		wrapper.appendChild(chart);
 
+		var menuWrapper = makeNode('div', 'menu');
+		var flaskButton = makeFormulaIcon(name, function (newType) {
+
+			console.log('Changing type to:', newType);
+			that._allCharts[name].type = newType;
+
+		});
+
+
+		menuWrapper.appendChild(flaskButton);
+
+		title.appendChild(titleText);
+		title.appendChild(menuWrapper);
+
 		container.appendChild(title);
 		container.appendChild(wrapper);
+
+		
 
 		var seriesData = [];
 		var maxData    = 500;
@@ -107,7 +198,7 @@
 
 		setInterval(function () {
 
-			seriesData.push({ x: Date.now() / 1000, y: that._allCharts[name].avg });
+			seriesData.push({ x: Date.now() / 1000, y: that._allCharts[name].val });
 
 			if (seriesData.length > maxData) {
 
@@ -115,19 +206,19 @@
 
 			}
 
-			that._allCharts[name].avg = false;
+			that._allCharts[name].val = false;
 			graph.update();
 
 		}, interval);
 
 	
 		
+		this._allCharts[name] = {};
 
-		this._allCharts[name] = {
-			graph: graph,
-			avg: 0
-		};
-
+		this._allCharts[name].graph = graph;
+		this._allCharts[name].val   = false;
+		this._allCharts[name].type  = 'avg';
+		
 	}
 
 	window.Charts = Charts;

@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 		jshint: {
   			// define the files to lint
   			files: [
+  				'index.js',
   				'Gruntfile.js', 
   				'modules/**/*.js',
   				'controllers/**/*.js',
