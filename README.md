@@ -34,11 +34,21 @@ As data comes in, Firejose automatically creates a graph for your to easily see 
 8. Start sending data to firejose in the firejose format. `timeinms:metricname:metricvalue`. This string needs to be UTF8 formatted.
 For example: `1405499680942:test:5`. I wrote a client for nodejs already, search npm for `firejose-client`. ![blah](http://i.imgur.com/LmX6xAB.png)
 9. The firejose web interface will automatically create graphs for metrics.
-![blah](http://i.imgur.com/mq30Aa2.png)
+![blah](http://i.imgur.com/WTUJLqF.png)
 10. When you introduce new metrics, new graphs are automatically created on the fly
 ![blah](http://i.imgur.com/7Y3jhpC.png)
 11. You can change the table headers by clicking on the name and entering a new name. 
 ![blah](http://i.imgur.com/vyO0TN3.png)
+
+
+##Multiple lines per chart
+If you want to have multiple lines per chart, use a hash in the name of your metric like this: `metric#line`. For example,
+```
+10000000:tweets#oranges:1
+10000000:tweets#cake:1
+10000000:tweets#bananas:1
+```
+This will create 3 lines one chart, called `metric` with three lines called `oranges`, `cake`, and `bananas`. 
 
 ##Automatically naming your charts
 In your config file you can automatically name your charts like this;
@@ -56,3 +66,6 @@ Supposing in this situation that you are sending `10000000:tweet:5`, your chart 
 
 ##Improving Firejose
 Firejose was written in a few hours, this results in less than perfect code and no doubt a plethora of bugs. If you found any bugs or made any improvements I'd love for you to send a pull request
+
+##Logo
+The logo was made by Bionda van den Ouden, if you need a logo done she's your girl! http://biondaaa.nl
