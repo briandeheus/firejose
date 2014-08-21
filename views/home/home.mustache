@@ -13,6 +13,7 @@
 
 		//Prefill with host because we are nice guys.
 		var url = prompt('Websocket URL for Firejose? (i.e localhost:7001)', window.location.hostname);
+		var ws  = new WS(url);
 
 	}
 
