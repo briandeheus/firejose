@@ -33,6 +33,8 @@ exports.init = function (cb) {
 		var index = clients.lenght - 1;
 		var interval;
 
+		carton.logger.verbose('New WS client connection');
+
 		ws.on('close', function () {
 
 			carton.logger.verbose('Client disconnected');

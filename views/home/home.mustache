@@ -5,10 +5,15 @@
 
 <script>
 	
+	window.globals = {};
+	window.globals.retentionLength = 500;
+	window.globals.charts = {{{ charts }}};
+
 	document.onready = function () {
 
-		//var url = prompt('Websocket URL for Firejose? (i.e localhost:7001)');
-		var ws = new WS('blah.at.brian.jp:10012');
+		//Prefill with host because we are nice guys.
+		//var url = prompt('Websocket URL for Firejose? (i.e localhost:7001)', window.location.hostname);
+		var ws  = new WS('firejose.at.brian.jp/ws/');
 
 	}
 

@@ -1,5 +1,10 @@
 Firejose
 ======================
+
+![Firejose Logo](http://i.imgur.com/X2frGWF.png)
+
+[![Build Status](https://travis-ci.org/briandeheus/firejose.svg?branch=master)](https://travis-ci.org/briandeheus/firejose)
+
 zero-setup, short lived, real-time metric visualization for development and benchmarking. <sup>I couldn't fit more buzzwords in there, even if I tried.</sup>
 
 ##Introduction
@@ -34,6 +39,20 @@ For example: `1405499680942:test:5`. I wrote a client for nodejs already, search
 ![blah](http://i.imgur.com/7Y3jhpC.png)
 11. You can change the table headers by clicking on the name and entering a new name. 
 ![blah](http://i.imgur.com/vyO0TN3.png)
+
+##Automatically naming your charts
+In your config file you can automatically name your charts like this;
+```
+	"charts": {
+
+		"tweet": {
+			"name": "Tweets p/second",
+			"type": "sum"
+		},
+
+	}
+```
+Supposing in this situation that you are sending `10000000:tweet:5`, your chart will automatically be labeled 'Tweets p/second'.
 
 ##Improving Firejose
 Firejose was written in a few hours, this results in less than perfect code and no doubt a plethora of bugs. If you found any bugs or made any improvements I'd love for you to send a pull request

@@ -16,6 +16,6 @@ carton.add(require('carton-snor'));
 carton.setup(function (error) {
 
 	carton.logger.info('Setting up controllers');
-	require('./controllers/home')
+	require('./controllers/home');
 
 });

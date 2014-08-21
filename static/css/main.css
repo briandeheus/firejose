@@ -35,7 +35,7 @@ body {
 	display: inline-block;
 	margin: 20px;
 	box-sizing: border-box;
-	width: 662px;
+	width: 570px;
 
 }
 
@@ -98,6 +98,14 @@ body {
 	right: 35px;
 	display: none;
 
+}
+
+.legend {
+
+	position: absolute;
+	right: 5px;
+	top: 60px;
+	
 }
 
 .hidden {
