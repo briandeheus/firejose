@@ -31,7 +31,12 @@
 		ws.onmessage = function (event) {
 			
 			var message = that.parseMessage(event.data);
-			charts.update(message.metric, message.timestamp, message.value);
+
+			if (!message) {
+				return;
+			}
+			
+			charts.update(message.metric, message.value);
 
 		};
 
@@ -43,7 +48,7 @@
 		var metric  = message.metric;
 		var time    = message.timestamp;
 
-		if (lastMessage[message.metric] && time > lastMessage[message.metric]) {
+		if (lastMessage[message.metric] && time >= lastMessage[message.metric]) {
 
 			lastMessage[metric] = time;
 			return message;

@@ -9,6 +9,7 @@ body {
 	text-align: left;
 	left: 80px;
 	position: absolute;
+
 }
 
 .contentContainer {
@@ -24,6 +25,7 @@ body {
 	border: 1px solid rgb(224, 224, 224);
 	margin: 5px;
 	padding: 5px;
+	position: relative;
 
 }
 
@@ -33,7 +35,7 @@ body {
 	display: inline-block;
 	margin: 20px;
 	box-sizing: border-box;
-	width: 662px;
+	width: 570px;
 
 }
 
@@ -61,3 +63,57 @@ body {
 	text-align: center;
 	font-weight: bold;
 }
+
+.menu {
+	position: absolute;
+	right: 0px;
+	top: 0px
+}
+
+.item {
+
+	width: 28px;
+	height: 28px;
+	border-left: 1px solid rgb(224, 224, 224);
+	line-height: 28px;
+	font-size: 20px;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	
+}
+
+.item:hover {
+
+	background-color: rgb(224, 224, 224);
+	color: white;
+
+}
+
+.iconMenu {
+
+	position: absolute;
+	top: 0px;
+	line-height: 29px;
+	right: 35px;
+	display: none;
+
+}
+
+.legend {
+
+	position: absolute;
+	right: 5px;
+	top: 60px;
+	
+}
+
+.hidden {
+	display: none;
+}
+
+label {
+	font-weight: normal;
+}
+
+input[type="radio"]:checked+label{ font-weight: bold; } 

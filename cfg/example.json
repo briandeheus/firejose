@@ -3,13 +3,17 @@
 		"port": 7050,
 		"secret": "this_is_not_a_good_secret"
 	},
+	
 	"udp": {
 		"port": 7051
 	},
+
 	"ws": {
 		"port": 7052
 	},
+
 	"logger": {
 		"level": "verbose"
 	}
+	
 }
