@@ -90,8 +90,6 @@
 
 		var charts = window.globals.charts;
 
-		console.log('checking', name, 'for', key);
-
 		if (charts[name] && charts[name][key]) {
 			return charts[name][key]
 		} else {
@@ -186,9 +184,7 @@
 
 		);
 
-		console.log(this.highlighter);
 		this.legend.render();
-
 
  	};
 
@@ -208,8 +204,6 @@
 			this._series[name].value = this._series[name].value / 2;
 
 		}
-
-		console.log(this._type, this._series[name].value);
 
  	}
 
